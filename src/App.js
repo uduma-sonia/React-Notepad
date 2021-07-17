@@ -1,14 +1,10 @@
 import "./App.css";
-import AddNote from "./components/AddNote";
-import Note from "./components/Note";
+import Home from "./components/Home";
 
 function App() {
   return (
-    <div className="App">
-      <h1>HELLO REACT</h1>
-
-      <AddNote />
-      <Note />
+    <div className="app-container">
+      <Home />
     </div>
   );
 }

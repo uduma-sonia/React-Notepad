@@ -22,7 +22,7 @@ const AddNote = () => {
   };
 
   return (
-    <div>
+    <div className="addnote-container">
       <form autoComplete="off" onSubmit={addNote}>
         <label>TITLE:</label>
         <input
