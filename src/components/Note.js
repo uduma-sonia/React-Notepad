@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../config/config";
+import AddNote from "./AddNote";
 
 import "../css/Style.css";
 
@@ -25,21 +26,11 @@ const Note = () => {
 
   return (
     <div className="notes-container">
-      <div className="nav">
-        <div>
-          <h3>Good Morning</h3>
-        </div>
-
-        <div>
-          <h3>Welcome</h3>
-        </div>
-      </div>
-
       {/* SEARCH BAR */}
       <div className="search-container">
         <form className="search-form">
           <label>
-            <i class="fas fa-search search-icon"></i>
+            <i className="fas fa-search search-icon"></i>
           </label>
           <input
             className="search-field"
@@ -49,15 +40,7 @@ const Note = () => {
         </form>
       </div>
 
-      {/* NEW NOTE */}
-      <div className="new-note">
-        <p>
-          <span>
-            <i class="fas fa-plus-square"></i>
-          </span>
-          Add New Note
-        </p>
-      </div>
+      <AddNote />
 
       <div className="note-container">
         {/* NOTE LIST */}
@@ -65,13 +48,13 @@ const Note = () => {
           <div className="note-card">
             <h2 className="title">
               {" "}
-              <i class="fas fa-circle"></i> {notes.Title}
+              <i className="fas fa-circle"></i> {notes.Title}
             </h2>
             <hr />
             <p className="body">
               {notes.Body}{" "}
               <span className="del-btn">
-                <i class="fas fa-trash-alt"></i>
+                <i className="fas fa-trash-alt"></i>
               </span>
             </p>
           </div>
