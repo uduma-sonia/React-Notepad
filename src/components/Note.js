@@ -25,6 +25,16 @@ const Note = () => {
 
   return (
     <div className="notes-container">
+      <div className="nav">
+        <div>
+          <h3>Good Morning</h3>
+        </div>
+
+        <div>
+          <h3>Welcome</h3>
+        </div>
+      </div>
+
       {/* SEARCH BAR */}
       <div className="search-container">
         <form className="search-form">
@@ -39,13 +49,34 @@ const Note = () => {
         </form>
       </div>
 
-      {/* NOTE LIST */}
-      {note.map((notes) => (
-        <div className="note-card">
-          <h2>{notes.Title}</h2>
-          <p>{notes.Body}</p>
-        </div>
-      ))}
+      {/* NEW NOTE */}
+      <div className="new-note">
+        <p>
+          <span>
+            <i class="fas fa-plus-square"></i>
+          </span>
+          Add New Note
+        </p>
+      </div>
+
+      <div className="note-container">
+        {/* NOTE LIST */}
+        {note.map((notes) => (
+          <div className="note-card">
+            <h2 className="title">
+              {" "}
+              <i class="fas fa-circle"></i> {notes.Title}
+            </h2>
+            <hr />
+            <p className="body">
+              {notes.Body}{" "}
+              <span className="del-btn">
+                <i class="fas fa-trash-alt"></i>
+              </span>
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
