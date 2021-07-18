@@ -53,7 +53,7 @@ const AddNote = () => {
           className="title-field"
           type="text"
           required
-          placeholder="title"
+          placeholder="Title"
           value={noteTitle}
           onChange={(e) => setNoteTitle(e.target.value)}
         />

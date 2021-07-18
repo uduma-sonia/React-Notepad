@@ -6,9 +6,11 @@ import "../css/Style.css";
 
 const Note = () => {
   const [note, setNote] = useState([]);
+  const [search, setSearch] = useState("");
 
   const ref = db.collection("noteList");
 
+  //GET NOTES FROM FIRESTORE
   function getNotes() {
     ref.onSnapshot((querySnapshot) => {
       //STORE ITEMS GOTTEN FROM DATABASE IN AN ARRAY
@@ -26,6 +28,17 @@ const Note = () => {
     db.collection("noteList").doc(id).delete();
   };
 
+  //SEARCH FUNCTION
+  const handleSearch = (e) => {
+    console.log(e.target.value);
+
+    const input = e.target.value;
+    const filtered = note.filter((Fnote) => {
+      return Fnote.data().Title.toLowerCase().includes(input.toLowerCase());
+    });
+    setNote(filtered);
+  };
+
   useEffect(() => {
     getNotes();
   }, []);
@@ -41,6 +54,7 @@ const Note = () => {
           <input
             className="search-field"
             type="text"
+            onChange={handleSearch}
             placeholder="Search Notes..."
           />
         </form>

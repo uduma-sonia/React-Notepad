@@ -1,5 +1,4 @@
 import React from "react";
-import AddNote from "./AddNote";
 import Note from "./Note";
 
 import "../css/Style.css";
@@ -9,7 +8,6 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      {/* <AddNote /> */}
       <Note />
     </div>
   );

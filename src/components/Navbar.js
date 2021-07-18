@@ -51,7 +51,7 @@ const Navbar = () => {
       });
   };
 
-  //LOG OUT
+  //LOG OUT FUNCTION
   const handleLogout = () => {
     firebase
       .auth()
@@ -62,7 +62,7 @@ const Navbar = () => {
         setIsLoggedOut(true);
       })
       .catch((error) => {
-        // An error happened.
+        //Sign-out unsuccessfull
       });
   };
 
@@ -87,6 +87,8 @@ const Navbar = () => {
         <div>
           <h3>{time}</h3>
         </div>
+
+        {/* CHECK IF USER IS SIGNED IN */}
         {isLoggedin === false ? (
           <div>
             <button className="sign-in" onClick={handleSignIn}>
@@ -96,6 +98,7 @@ const Navbar = () => {
         ) : (
           <>
             <div>
+              {/* CHECK IF USER IS LOGGED OUT */}
               {isLoggedOut === true ? (
                 <button className="sign-in" onClick={handleSignIn}>
                   Sign in with google

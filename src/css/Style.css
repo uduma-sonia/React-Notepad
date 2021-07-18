@@ -16,12 +16,17 @@
 
 .sign-in,
 .sign-out {
-  background-color: transparent;
+  background-color: #04a1a1;
   padding: 7px;
   border: 1px solid grey;
   border-radius: 5px;
   outline: none;
   cursor: pointer;
+}
+
+.sign-in:hover,
+.sign-out:hover {
+  background-color: #008080;
 }
 
 .sign-out {
@@ -30,6 +35,7 @@
 
 #name-display {
   border: none;
+  background-color: transparent;
 }
 
 img {
