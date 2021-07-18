@@ -11,14 +11,20 @@ const Note = () => {
 
   function getNotes() {
     ref.onSnapshot((querySnapshot) => {
-      const items = [];
+      //STORE ITEMS GOTTEN FROM DATABASE IN AN ARRAY
+      const allItems = [];
 
       querySnapshot.forEach((doc) => {
-        items.push(doc.data());
+        allItems.push(doc);
       });
-      setNote(items);
+      setNote(allItems);
     });
   }
+
+  //DELETE NOTE
+  const deleteNote = async (id) => {
+    db.collection("noteList").doc(id).delete();
+  };
 
   useEffect(() => {
     getNotes();
@@ -45,15 +51,15 @@ const Note = () => {
       <div className="note-container">
         {/* NOTE LIST */}
         {note.map((notes) => (
-          <div className="note-card">
+          <div className="note-card" data-id={notes.id} key={notes.id}>
             <h2 className="title">
               {" "}
-              <i className="fas fa-circle"></i> {notes.Title}
+              <i className="fas fa-circle"></i> {notes.data().Title}
             </h2>
             <hr />
             <p className="body">
-              {notes.Body}{" "}
-              <span className="del-btn">
+              {notes.data().Body}
+              <span className="del-btn" onClick={() => deleteNote(notes.id)}>
                 <i className="fas fa-trash-alt"></i>
               </span>
             </p>
