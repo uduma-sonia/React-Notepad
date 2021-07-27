@@ -6,7 +6,7 @@ import "../css/Style.css";
 
 const Note = () => {
   const [note, setNote] = useState([]);
-  const [search, setSearch] = useState("");
+  const [inputValue, setInputValue] = useState("");
 
   const ref = db.collection("noteList");
 
@@ -31,6 +31,7 @@ const Note = () => {
   //SEARCH FUNCTION
   const handleSearch = (e) => {
     console.log(e.target.value);
+    e.preventDefault()
 
     const input = e.target.value;
     const filtered = note.filter((Fnote) => {
@@ -51,9 +52,11 @@ const Note = () => {
           <label>
             <i className="fas fa-search search-icon"></i>
           </label>
+
           <input
             className="search-field"
             type="text"
+            // value={inputValue}
             onChange={handleSearch}
             placeholder="Search Notes..."
           />

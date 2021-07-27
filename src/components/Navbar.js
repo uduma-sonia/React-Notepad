@@ -37,13 +37,13 @@ const Navbar = () => {
       .signInWithPopup(provider)
       .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
-        var credential = result.credential;
+        // var credential = result.credential;
 
         // This gives you a Google Access Token. You can use it to access the Google API.
-        var token = credential.accessToken;
+        // var token = credential.accessToken;
         // The signed-in user info.
         var user = result.user;
-        console.log(user)
+        console.log(user);
 
         // ...
       })
@@ -73,6 +73,7 @@ const Navbar = () => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         var uid = user.uid;
+        console.log(uid);
         setIsLoggedIn(true);
         setName(user.displayName);
         setPhoto(user.photoURL);
@@ -107,7 +108,7 @@ const Navbar = () => {
               ) : (
                 <>
                   <img src={photo} />
-                  <button className="sign-in" id="name-display">
+                  <button className="sign-in" id="name-display" alt="user-photo">
                     Hello {name}
                   </button>
 

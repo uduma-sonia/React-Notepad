@@ -25,6 +25,7 @@
 .sign-in,
 .sign-out {
   background-color: #04a1a1;
+  color: #fff;
   padding: 7px;
   border: 1px solid grey;
   border-radius: 5px;
@@ -75,6 +76,7 @@ img {
 }
 
 .search-icon {
+  padding-left: 10px;
   font-size: 23px;
   color: rgb(128, 126, 126);
 }
@@ -235,4 +237,47 @@ hr:after {
 
 #add-btn:hover {
   background-color: #008080;
+}
+
+@media only screen and (max-width: 950px) {
+  .note-container {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .note-container {
+    grid-template-columns: auto;
+  }
+
+  .nav {
+    margin-bottom: 20px;
+  }
+
+  .nav h3 {
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  .sign-in,
+  .sign-out {
+    padding: 5px;
+    font-size: 13px;
+  }
+
+  .search-icon {
+    font-size: 20px;
+    padding-left: 10px;
+  }
+
+  .search-field {
+    font-size: 18px;
+    width: 80%;
+    padding-left: 10px;
+  }
+
+  .new-note {
+    font-size: 16px;
+    padding: 0px 10px;
+  }
 }
