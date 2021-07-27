@@ -43,6 +43,7 @@ const Navbar = () => {
         var token = credential.accessToken;
         // The signed-in user info.
         var user = result.user;
+        console.log(user)
 
         // ...
       })
@@ -82,7 +83,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <div className="nav">
         <div>
           <h3>{time}</h3>
@@ -119,7 +120,7 @@ const Navbar = () => {
           </>
         )}
       </div>
-    </div>
+    </>
   );
 };
 

@@ -63,6 +63,7 @@ const Note = () => {
       <AddNote />
 
       <div className="note-container">
+        {note.length === 0 && <div className="pre-loader">LOADING...</div>}
         {/* NOTE LIST */}
         {note.map((notes) => (
           <div className="note-card" data-id={notes.id} key={notes.id}>
