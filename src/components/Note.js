@@ -5,8 +5,9 @@ import AddNote from "./AddNote";
 import "../css/Style.css";
 
 const Note = () => {
+  // const [directNote, setDirectNote] = useState([]);
   const [note, setNote] = useState([]);
-  const [inputValue, setInputValue] = useState("");
+  const [allNotes, setAllNotes] = useState([]);
 
   const ref = db.collection("noteList");
 
@@ -19,25 +20,27 @@ const Note = () => {
       querySnapshot.forEach((doc) => {
         allItems.push(doc);
       });
+
       setNote(allItems);
+      setAllNotes(allItems);
     });
   }
-
-  //DELETE NOTE
-  const deleteNote = async (id) => {
-    db.collection("noteList").doc(id).delete();
-  };
 
   //SEARCH FUNCTION
   const handleSearch = (e) => {
     console.log(e.target.value);
-    e.preventDefault()
+    e.preventDefault();
 
     const input = e.target.value;
-    const filtered = note.filter((Fnote) => {
+    const filtered = allNotes.filter((Fnote) => {
       return Fnote.data().Title.toLowerCase().includes(input.toLowerCase());
     });
     setNote(filtered);
+  };
+
+  //DELETE NOTE
+  const deleteNote = async (id) => {
+    db.collection("noteList").doc(id).delete();
   };
 
   useEffect(() => {
@@ -56,7 +59,6 @@ const Note = () => {
           <input
             className="search-field"
             type="text"
-            // value={inputValue}
             onChange={handleSearch}
             placeholder="Search Notes..."
           />
