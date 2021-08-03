@@ -5,7 +5,6 @@ import AddNote from "./AddNote";
 import "../css/Style.css";
 
 const Note = () => {
-  // const [directNote, setDirectNote] = useState([]);
   const [note, setNote] = useState([]);
   const [allNotes, setAllNotes] = useState([]);
 

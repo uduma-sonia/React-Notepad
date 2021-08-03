@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { firebase } from "../config/config";
+import { firebase, db } from "../config/config";
 
 const Navbar = () => {
   const [time, setTime] = useState("");
@@ -37,10 +37,9 @@ const Navbar = () => {
       .signInWithPopup(provider)
       .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
-        // var credential = result.credential;
+        var credential = result.credential;
 
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        // var token = credential.accessToken;
+        var token = credential.accessToken;
         // The signed-in user info.
         var user = result.user;
         console.log(user);
@@ -49,6 +48,7 @@ const Navbar = () => {
       })
       .catch((error) => {
         console.log(error);
+        console.log("error");
       });
   };
 
@@ -58,12 +58,11 @@ const Navbar = () => {
       .auth()
       .signOut()
       .then(() => {
-        // Sign-out successful.
         console.log("signed out");
         setIsLoggedOut(true);
       })
       .catch((error) => {
-        //Sign-out unsuccessfull
+        console.log(error.message);
       });
   };
 
@@ -107,8 +106,8 @@ const Navbar = () => {
                 </button>
               ) : (
                 <>
-                  <img src={photo} />
-                  <button className="sign-in" id="name-display" alt="user-photo">
+                  <img src={photo} alt="user-photo" />
+                  <button className="sign-in" id="name-display">
                     Hello {name}
                   </button>
 
